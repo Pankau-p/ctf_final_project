@@ -7,10 +7,14 @@
     $action = $_POST['action'] ?? $_GET['action'] ?? '';
 
     if ($action === 'login') {
-        include('view/shared/header.php');
-        include('view/login/login.php');
-        include('view/shared/footer.php');
-    } elseif ($action === 'register') {
+        include('controller/auth/login.php');
+    } elseif ($action === 'dashboard') {
+        include('controller/dashboard/index.php');
+    } elseif ($action === 'logout') {
+        session_destroy();
+        header('Location: /ctf/index.php');
+        exit();
+    }elseif ($action === 'register') {
         include('view/shared/header.php');
         include('view/register/register.php');
         include('view/shared/footer.php');
