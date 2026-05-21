@@ -16,7 +16,7 @@
         exit();
     }elseif ($action === 'register') {
         include('view/shared/header.php');
-        include('view/register/register.php');
+        include('view/register/index.php');
         include('view/shared/footer.php');
     } else { 
         include('view/shared/header.php');
