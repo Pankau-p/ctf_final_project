@@ -6,9 +6,9 @@
 // Description: Database connection file. 
 // Creates a PDO instance for use throughout the application.
 
-$dsn = 'mysql:host=localhost;dbname=ctf_platform;charset=utf8';
+$dsn = 'mysql:host=db;dbname=ctf_platform;charset=utf8';
 $username = 'root';
-$password = '';
+$password = 'root';
 
 try {
     $db = new PDO($dsn, $username, $password);
