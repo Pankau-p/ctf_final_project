@@ -15,9 +15,7 @@
         header('Location: /ctf/index.php');
         exit();
     }elseif ($action === 'register') {
-        include('view/shared/header.php');
-        include('view/register/index.php');
-        include('view/shared/footer.php');
+        include('controller/auth/register.php');
     } else { 
         include('view/shared/header.php');
         ?>

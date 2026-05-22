@@ -3,7 +3,7 @@
 
         <div class="form-card-header">
             <h2 class="form-card-title">Welcome back</h2>
-            <p class="form-card-subtitle">Sign in to your Horizon CTF account</p>
+            <p class="form-card-subtitle">Sign in to your OutRun account</p>
         </div>
 
         <?php if (!empty($error)): ?>

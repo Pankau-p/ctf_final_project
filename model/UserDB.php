@@ -29,9 +29,57 @@ class UserDB {
             $statement->closeCursor();
             return $user;
         } catch (PDOException $e) {
-            $error_message = $e->getMessage();
-            include($_SERVER['DOCUMENT_ROOT'] . 'view/shared/database_error.php');            
-            exit();
+            die($e->getMessage());
+            //$error_message = $e->getMessage();
+            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');            
+            //exit();
+        }
+    }
+
+    // Get the list of countries from the DB
+    public function get_countries() {
+        try {
+            $query = 'SELECT * FROM countries';
+            $statement = $this->db->prepare($query);
+            $statement->execute();
+            $countries = $statement->fetchAll();
+            $statement->closeCursor();
+            return $countries;
+        } catch (PDOException $e) {
+            die($e->getMessage());
+            //$error_message = $e->getMessage();
+            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
+            //exit();
+        }
+    }
+
+    // Add a customer with firstName, lastName, 
+    // countryCode, email and password
+    public function register_user($username, $firstName, $lastName, 
+                      $countryCode, $email, $password) {
+
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+        try {
+            $query = 'INSERT INTO users (username, firstName, lastName, 
+                      countryCode, email, password)
+                      VALUES
+                      (:username, :firstName, :lastName, :countryCode,:email, :password_hash)';
+            $statement = $this->db->prepare($query);
+            $statement->bindValue(':username', $username);
+            $statement->bindValue(':firstName', $firstName);
+            $statement->bindValue(':lastName', $lastName);
+            $statement->bindValue(':countryCode', $countryCode);
+            $statement->bindValue(':email', $email);
+            $statement->bindValue(':password_hash', $password_hash);
+            $statement->execute();
+            $statement->closeCursor();
+            return $this->db->lastInsertId();
+        } catch (PDOException $e) {
+            die($e->getMessage());
+            //$error_message = $e->getMessage();
+            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
+            //exit();
         }
     }
 }
