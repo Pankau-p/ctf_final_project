@@ -434,3 +434,317 @@ main {
     color: var(--color-text-muted);
     margin-top: var(--space-lg);
 }
+
+/* ============================================
+   DASHBOARD PAGE
+   Two column layout. Left sidebar has runner
+   card, stats table and leaderboard. Right
+   column has progress bar and challenge list.
+   ============================================ */
+
+/* --- Main Layout --- */
+
+.dashboard-main {
+    max-width: 68rem;
+    margin: var(--space-xl) auto;
+    padding: 0 var(--space-xl);
+}
+
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    gap: var(--space-xl);
+    align-items: start;
+}
+
+/* ============================================
+   LEFT SIDEBAR
+   ============================================ */
+
+.dashboard-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    min-width: 22rem;
+}
+
+.sidebar-card-title {
+    display: block;
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+}
+
+/* --- Runner Card --- */
+
+.runner-card {
+    background: #1e1b3a;
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.runner-card-text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.runner-card-label {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    color: #6b5fa0;
+}
+
+.runner-card-tagline {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    color: var(--color-pink);
+}
+
+.runner-svg {
+    width: 4rem;
+    height: 4rem;
+    display: none;
+}
+
+/* --- Stats Card --- */
+
+.stats-card {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+}
+
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.stats-table tr {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.stats-table tr:last-child {
+    border-bottom: none;
+}
+
+.stats-table-label {
+    font-size: var(--font-size-base);
+    color: var(--color-text-muted);
+    padding: var(--space-sm) 0;
+}
+
+.stats-table-value {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    text-align: right;
+    padding: var(--space-sm) 0;
+}
+
+.stat-pink {
+    color: var(--color-pink);
+}
+
+.stat-purple {
+    color: var(--color-purple);
+}
+
+.stat-blue {
+    color: var(--color-blue);
+}
+
+/* --- Leaderboard Card --- */
+
+.leaderboard-card {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.leaderboard-table tr {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.leaderboard-table tr:last-child {
+    border-bottom: none;
+}
+
+.leaderboard-rank {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    padding: var(--space-sm) 0;
+    width: 1.5rem;
+}
+
+.leaderboard-name {
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    padding: var(--space-sm) 0;
+}
+
+.leaderboard-points {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    color: var(--color-purple);
+    text-align: right;
+    padding: var(--space-sm) 0;
+}
+
+.leaderboard-row-me .leaderboard-name,
+.leaderboard-row-me .leaderboard-rank,
+.leaderboard-row-me .leaderboard-points {
+    color: var(--color-pink);
+}
+
+/* ============================================
+   RIGHT COLUMN
+   ============================================ */
+
+.dashboard-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+/* --- Progress Card --- */
+
+.progress-card {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+}
+
+.progress-label {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.progress-count {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+}
+
+.progress-track {
+    background: var(--color-bg);
+    border-radius: 99px;
+    height: 0.625rem;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--color-pink), var(--color-purple));
+    transition: width 0.4s ease;
+}
+
+/* --- Challenges Card --- */
+
+.challenges-card {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+}
+
+.challenge-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.challenge-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.challenge-row:last-child {
+    border-bottom: none;
+}
+
+.challenge-row-solved {
+    opacity: 0.7;
+}
+
+.challenge-name {
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+.challenge-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.challenge-badge {
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+}
+
+.challenge-badge-easy {
+    background: #e1f5ee;
+    color: #0f6e56;
+}
+
+.challenge-badge-medium {
+    background: #faeeda;
+    color: #854f0b;
+}
+
+.challenge-badge-hard {
+    background: #fbeaf0;
+    color: #993556;
+}
+
+.challenge-badge-pts {
+    background: #f3eeff;
+    color: var(--color-purple);
+}
+
+.challenge-badge-solved {
+    background: #e1f5ee;
+    color: #0f6e56;
+}
+
+.stats-table-label,
+.stats-table-value,
+.leaderboard-rank,
+.leaderboard-name,
+.leaderboard-points {
+    padding: var(--space-xs) 0;
+}

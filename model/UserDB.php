@@ -110,7 +110,7 @@ class UserDB {
                         FROM user_challenges uc
                         JOIN challenges c ON uc.challengeID = c.challengeID
                         WHERE uc.userID = :user_id';
-                        $statement = $this->db->prepare($query);
+            $statement = $this->db->prepare($query);
             $statement->bindValue(':user_id', $user_id);   
             $statement->execute();
             $user_stats = $statement->fetch();
@@ -124,5 +124,68 @@ class UserDB {
         }
     }
 
-    public function get_progress($user_id) {}
+    public function get_progress($user_id) {
+        try {
+            $query = 'SELECT
+                        SUM(CASE WHEN uc.solved = true THEN 1 ELSE 0 END) AS solved,
+                        (SELECT COUNT(*) FROM challenges) AS total
+                        FROM user_challenges uc
+                        WHERE uc.userID = :user_id';
+            $statement = $this->db->prepare($query);
+            $statement->bindValue(':user_id', $user_id);   
+            $statement->execute();
+            $user_progress = $statement->fetch();
+            $statement->closeCursor();
+            return $user_progress;  
+        } catch (PDOException $e) {
+            die($e->getMessage());
+            //$error_message = $e->getMessage();
+            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
+            //exit();
+        }
+    }
+
+    public function get_challenges_with_status($user_id) {
+        try {
+            $query = 'SELECT c.challengeID, c.title, c.difficulty, c.points,
+                      COALESCE(uc.solved, 0) AS solved
+                      FROM challenges c
+                      LEFT JOIN user_challenges uc 
+                      ON c.challengeID = uc.challengeID 
+                      AND uc.userID = :user_id';
+            $statement = $this->db->prepare($query);
+            $statement->bindValue(':user_id', $user_id);   
+            $statement->execute();
+            $challenge_with_status = $statement->fetchAll();
+            $statement->closeCursor();
+            return $challenge_with_status; 
+        } catch (PDOException $e) {
+            die($e->getMessage());
+            //$error_message = $e->getMessage();
+            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
+            //exit();
+        }
+    }
+
+    public function  get_leaderboard() {
+        try {
+            $query = 'SELECT u.username, 
+                       COALESCE(SUM(CASE WHEN uc.solved = true THEN c.points ELSE 0 END), 0) AS totalPoints
+                       FROM users u
+                       LEFT JOIN user_challenges uc ON u.userID = uc.userID
+                       LEFT JOIN challenges c ON uc.challengeID = c.challengeID
+                       GROUP BY u.userID, u.username
+                       ORDER BY totalPoints DESC';
+            $statement = $this->db->prepare($query);
+            $statement->execute();
+            $leaderboard = $statement->fetchAll();
+            $statement->closeCursor();
+            return $leaderboard; 
+        } catch (PDOException $e) {
+            die($e->getMessage());
+            //$error_message = $e->getMessage();
+            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
+            //exit();
+        }
+    }
 }
