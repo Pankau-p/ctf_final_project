@@ -25,7 +25,7 @@
             </div>
            <div class="form-group">
                 <label class="form-label" for="email">Country </label>
-                <select name="country_code">
+                <select id="country_code" name="country_code" class="form-input">
                     <?php foreach ($countries as $country) : ?>
                         <option value="<?= $country['countryCode'] ?>"
                             <?php if (($formData['countryCode'] ?? '') === $country['countryCode']) echo 'selected'; ?>>

@@ -82,4 +82,47 @@ class UserDB {
             //exit();
         }
     }
+
+    public function get_user_by_id($user_id) {
+        try {
+            $query = 'SELECT * FROM users
+                      WHERE users.userID = :user_id';
+            $statement = $this->db->prepare($query);
+            $statement->bindValue(':user_id', $user_id);   
+            $statement->execute();
+            $user = $statement->fetch();
+            $statement->closeCursor();
+            return $user;     
+        } catch (PDOException $e) {
+            die($e->getMessage());
+            //$error_message = $e->getMessage();
+            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
+            //exit();
+        }
+    }
+
+    public function get_user_stats($user_id) {
+        try {
+            $query = 'SELECT 
+                        SUM(CASE WHEN uc.solved = true THEN c.points ELSE 0 END) AS totalPoints,
+                        SUM(CASE WHEN uc.solved = true THEN 1 ELSE 0 END) AS totalSolved,
+                        SUM(uc.attempts) AS totalAttempts
+                        FROM user_challenges uc
+                        JOIN challenges c ON uc.challengeID = c.challengeID
+                        WHERE uc.userID = :user_id';
+                        $statement = $this->db->prepare($query);
+            $statement->bindValue(':user_id', $user_id);   
+            $statement->execute();
+            $user_stats = $statement->fetch();
+            $statement->closeCursor();
+            return $user_stats;  
+        } catch (PDOException $e) {
+            die($e->getMessage());
+            //$error_message = $e->getMessage();
+            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
+            //exit();
+        }
+    }
+
+    public function get_progress($user_id) {}
 }
