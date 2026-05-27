@@ -747,3 +747,234 @@ main {
 .leaderboard-points {
     padding: var(--space-xs) 0;
 }
+
+/* ============================================
+   CHALLENGE PAGE
+   Single challenge view. Full width card with
+   dark top strip, main content left, dark aside
+   right with solves, attempts and hint reveal.
+   ============================================ */
+
+/* --- Layout --- */
+
+.challenge-main {
+    max-width: 68rem;
+    margin: var(--space-xl) auto;
+    padding: 0 var(--space-xl);
+}
+
+.challenge-back {
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    color: var(--color-purple);
+    margin-bottom: var(--space-md);
+    text-decoration: none;
+}
+
+.challenge-back:hover {
+    color: var(--color-pink);
+}
+
+/* --- Card --- */
+
+.challenge-card {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+/* --- Card Top Strip --- */
+
+.challenge-card-top {
+    background: #1e1b3a;
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+/* --- Card Body --- */
+
+.challenge-card-body {
+    display: grid;
+    grid-template-columns: 1fr 1px 20rem;
+}
+
+/* --- Main Content --- */
+
+.challenge-content {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.challenge-title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);
+    color: var(--color-text);
+}
+
+.challenge-description {
+    font-size: var(--font-size-base);
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: var(--space-md);
+}
+
+/* --- Flag Box --- */
+
+.flag-box {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.flag-box-label {
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    color: var(--color-text-muted);
+}
+
+.flag-input {
+    font-family: monospace;
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+    width: 100%;
+    outline: none;
+    transition: border-color 0.15s;
+    margin-bottom: var(--space-sm);
+}
+
+.flag-input:focus {
+    border-color: var(--color-purple);
+}
+
+.flag-input::placeholder {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-xs);
+}
+
+/* --- Solved Banner --- */
+
+.flag-solved {
+    background: #e1f5ee;
+    border: 1px solid #c8f0e0;
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-lg);
+    color: #0f6e56;
+    font-size: var(--font-size-base);
+    font-weight: 500;
+}
+
+/* --- Success / Error --- */
+
+.form-success {
+    font-size: var(--font-size-sm);
+    color: #0f6e56;
+    background: #e1f5ee;
+    border: 1px solid #c8f0e0;
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+}
+
+/* --- Divider --- */
+
+.challenge-divider {
+    background: var(--color-border);
+    width: 1px;
+}
+
+/* --- Aside --- */
+
+.challenge-aside {
+    background: #2a2550;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.aside-stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-bottom: -0.8rem;
+}
+
+.aside-label {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    color: #ffffff;
+    margin-bottom: -0.8rem;
+}
+
+.aside-value {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xxl);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: -0.8rem;
+}
+
+.aside-value-sm {
+    font-size: var(--font-size-xl);
+}
+
+.aside-sub {
+    font-size: var(--font-size-xs);
+    color: #ffffff;
+}
+
+.aside-divider {
+    height: 1px;
+    background: #3d3770;
+}
+
+/* --- Hints --- */
+
+.aside-hints {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.hint-btn {
+    background: transparent;
+    border: 1px solid #3d3770;
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+    color: #a78bfa;
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.15s;
+}
+
+.hint-btn:hover {
+    background: #3d3770;
+}
+
+.hint-box {
+    background: #1e1b3a;
+    border: 1px solid #3d3770;
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    color: #c4b5fd;
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+}

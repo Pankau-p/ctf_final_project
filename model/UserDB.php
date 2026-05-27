@@ -188,4 +188,53 @@ class UserDB {
             //exit();
         }
     }
+
+    public function get_challenge($challenge_id, $user_id) {
+        try { 
+            $query = 'SELECT c.*, 
+                      uc.solved, uc.solved_at, uc.attempts,
+                      solves.totalSolves
+                      FROM challenges c
+                      LEFT JOIN user_challenges uc 
+                          ON c.challengeID = uc.challengeID
+                          AND uc.userID = :user_id
+                      LEFT JOIN (SELECT challengeID, COUNT(*) AS totalSolves 
+                          FROM user_challenges WHERE solved = 1 
+                          GROUP BY challengeID) solves
+                        ON c.challengeID = solves.challengeID
+                      WHERE c.challengeID = :challenge_id';
+            $statement = $this->db->prepare($query);
+            $statement->bindValue(':challenge_id', $challenge_id);   
+            $statement->bindValue(':user_id', $user_id);   
+            $statement->execute();
+            $challenge = $statement->fetch();
+            $statement->closeCursor();
+            return $challenge; 
+        } catch (PDOException $e) {
+            die($e->getMessage());
+            //$error_message = $e->getMessage();
+            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
+            //exit();
+        }               
+    }   
+
+public function submit_flag($user_id, $challenge_id) {
+    try {
+        $query = 'INSERT INTO user_challenges (userID, challengeID, solved, solved_at)
+                  VALUES (:user_id, :challenge_id, 1, NOW())
+                  ON DUPLICATE KEY UPDATE
+                  solved = 1,
+                  solved_at = NOW()';
+        $statement = $this->db->prepare($query);
+        $statement->bindValue(':user_id', $user_id);
+        $statement->bindValue(':challenge_id', $challenge_id);
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        die($e->getMessage());
+        //$error_message = $e->getMessage();
+        //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
+        //exit();
+        }
+    }
 }

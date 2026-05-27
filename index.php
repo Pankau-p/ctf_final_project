@@ -14,8 +14,10 @@
         session_destroy();
         header('Location: /ctf/index.php');
         exit();
-    }elseif ($action === 'register') {
+    } elseif ($action === 'register') {
         include('controller/auth/register.php');
+    } elseif ($action === 'challenge') {
+        include('controller/challenge/index.php');
     } else { 
         include('view/shared/header.php');
         ?>
