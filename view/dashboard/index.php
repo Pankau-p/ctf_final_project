@@ -10,30 +10,9 @@
             <!-- Runner Card -->
             <div class="runner-card">
                 <div class="runner-card-text">
-                    <span class="runner-card-label">Current Run</span>
+                    <span class="runner-card-label">Started at the bottom, now were here...</span>
                     <span class="runner-card-tagline">Keep going, Runner!</span>
                 </div>
-                <svg viewBox="0 0 80 80" class="runner-svg" xmlns="http://www.w3.org/2000/svg">
-                    <!-- grid lines -->
-                    <line x1="0" y1="80" x2="80" y2="40" stroke="#8b5cf6" stroke-width="0.4" opacity="0.4"/>
-                    <line x1="0" y1="80" x2="80" y2="55" stroke="#8b5cf6" stroke-width="0.4" opacity="0.3"/>
-                    <line x1="0" y1="80" x2="80" y2="65" stroke="#8b5cf6" stroke-width="0.4" opacity="0.2"/>
-                    <line x1="0" y1="70" x2="80" y2="70" stroke="#8b5cf6" stroke-width="0.4" opacity="0.3"/>
-                    <line x1="0" y1="60" x2="80" y2="60" stroke="#8b5cf6" stroke-width="0.4" opacity="0.2"/>
-                    <!-- glow -->
-                    <ellipse cx="40" cy="68" rx="14" ry="3" fill="#e8437a" opacity="0.2"/>
-                    <!-- stickman -->
-                    <circle cx="40" cy="20" r="6" fill="none" stroke="#e8437a" stroke-width="2"/>
-                    <line x1="40" y1="26" x2="40" y2="45" stroke="#e8437a" stroke-width="2" stroke-linecap="round"/>
-                    <line x1="40" y1="32" x2="30" y2="26" stroke="#e8437a" stroke-width="2" stroke-linecap="round"/>
-                    <line x1="40" y1="32" x2="50" y2="38" stroke="#e8437a" stroke-width="2" stroke-linecap="round"/>
-                    <line x1="40" y1="45" x2="30" y2="58" stroke="#e8437a" stroke-width="2" stroke-linecap="round"/>
-                    <line x1="40" y1="45" x2="48" y2="56" stroke="#e8437a" stroke-width="2" stroke-linecap="round"/>
-                    <!-- motion lines -->
-                    <line x1="18" y1="30" x2="26" y2="30" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
-                    <line x1="14" y1="36" x2="24" y2="36" stroke="#38bdf8" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
-                    <line x1="16" y1="42" x2="25" y2="42" stroke="#38bdf8" stroke-width="0.8" stroke-linecap="round" opacity="0.3"/>
-                </svg>
             </div>
 
             <!-- Stats Table -->

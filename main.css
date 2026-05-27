@@ -279,7 +279,6 @@ main {
 
 /* ============================================
    FOOTER
-   Simple centered footer at the bottom of the page.
    ============================================ */
 
 .footer {
@@ -510,11 +509,6 @@ main {
     color: var(--color-pink);
 }
 
-.runner-svg {
-    width: 4rem;
-    height: 4rem;
-    display: none;
-}
 
 /* --- Stats Card --- */
 
@@ -714,6 +708,11 @@ main {
     padding: var(--space-xs) var(--space-sm);
     border-radius: var(--radius-sm);
     white-space: nowrap;
+    transition: transform 0.15s ease;
+}
+
+.challenge-badge:hover {
+    transform: scale(1.08);
 }
 
 .challenge-badge-easy {
