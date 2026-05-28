@@ -24,10 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'submit_flag') {
     $challengeID = $_POST['challengeID'] ?? null;
     $flag = $_POST['flag'];
     $user_id = $_SESSION['user_id'];
-    $challenge = $user_db->get_challenge($challenge_id, $user_id);
+    $challenge = $user_db->get_challenge($challengeID, $user_id);
     if ($flag === $challenge['flag']) {
-        $user_db->submit_flag($user_id, $challenge_id);
-        $challenge = $user_db->get_challenge($challenge_id, $user_id);
+        $user_db->submit_flag($user_id, $challengeID);
+        $challenge = $user_db->get_challenge($challengeID, $user_id);
         $success =  "Flag accepted! Well done.";
     } else {
         $error = "Invalid Flag, try again!";

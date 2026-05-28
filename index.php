@@ -18,6 +18,8 @@
         include('controller/auth/register.php');
     } elseif ($action === 'challenge') {
         include('controller/challenge/index.php');
+    } elseif ($action === 'submit_flag') {
+        include('controller/challenge/index.php');
     } else { 
         include('view/shared/header.php');
         ?>

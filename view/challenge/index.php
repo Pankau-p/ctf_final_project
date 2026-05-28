@@ -49,18 +49,19 @@
                         </form>
                     </div>
                 <?php else: ?>
+
                     <div class="flag-solved">
                         ✓ You solved this challenge on <?= date('M j, Y', strtotime($challenge['solved_at'])) ?>
                     </div>
-                <?php endif; ?>
-
-            </div>
-
+                    <?php endif; ?>
+                    
+                </div>
+                
             <!-- ================================
                  DIVIDER
             ================================ -->
             <div class="challenge-divider"></div>
-
+            <!--Check beneath the surface....CTF{hidden_in_plain_sight} -->
             <!-- ================================
                  ASIDE
                  Solves, attempts, hint
