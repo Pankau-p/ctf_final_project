@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /ctf/admin/
+Disallow: /ctf/flags/
+
+# CTF{robots_cant_hide_secrets}

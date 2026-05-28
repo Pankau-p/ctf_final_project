@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'submit_flag') {
     $flag = $_POST['flag'];
     $user_id = $_SESSION['user_id'];
     $challenge = $user_db->get_challenge($challengeID, $user_id);
+
     if ($flag === $challenge['flag']) {
         $user_db->submit_flag($user_id, $challengeID);
         $challenge = $user_db->get_challenge($challengeID, $user_id);
@@ -37,6 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'submit_flag') {
     $user_id = $_SESSION['user_id'];
     $user = $user_db->get_user_by_id($user_id);
     $challenge = $user_db->get_challenge($challenge_id, $user_id);
+
+    if ($challenge_id == 1004) {
+        setcookie('flag', 'CTF{cookies_are_not_secret}', time() + 3600);
+    }
 }
 
 include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/header.php');

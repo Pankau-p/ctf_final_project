@@ -28,10 +28,6 @@
                         <td class="stats-table-value stat-purple"><?= $stats['totalSolved'] ?></td>
                     </tr>
                     <tr>
-                        <td class="stats-table-label">Attempts</td>
-                        <td class="stats-table-value stat-blue"><?= $stats['totalAttempts'] ?></td>
-                    </tr>
-                    <tr>
                         <td class="stats-table-label">Rank</td>
                         <td class="stats-table-value stat-pink">#<?= $stats['rank'] ?></td>
                     </tr>

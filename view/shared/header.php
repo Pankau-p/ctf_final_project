@@ -1,3 +1,4 @@
+<?php $action = $_GET['action'] ?? ''; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,10 +15,25 @@
             <span class="header-logo-tagline">CTF Training Platform</span>
         </div>
     </a>
+
     <nav class="header-nav">
-        <a href="/ctf/index.php?page=challenges">Challenges</a>
-        <a href="/ctf/index.php?page=about">About</a>
-        <a href="/ctf/index.php?page=login">Login</a>
-        <a href="/ctf/index.php?page=register" class="btn btn-primary">Sign Up</a>
+
+        <?php if (isset($_SESSION['user'])): ?>
+
+            <a href="/ctf/index.php?action=dashboard"
+                class="<?= $action === 'dashboard' ? 'active' : '' ?>">
+                Dashboard
+            </a>
+            <a href="/ctf/index.php?action=about"
+                class="<?= $action === 'about' ? 'active' : '' ?>">
+                About</a>
+            <a href="/ctf/index.php?action=logout">Logout</a>
+
+        <?php else: ?>
+            <a href="/ctf/index.php?action=about">About</a>
+            <a href="/ctf/index.php?action=login">Login</a>
+            <a href="/ctf/index.php?action=register" class="btn btn-primary">Sign Up</a>
+
+        <?php endif; ?>
     </nav>
 </header>

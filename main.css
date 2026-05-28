@@ -262,6 +262,11 @@ h3 {
     color: var(--color-purple);
 }
 
+.active {
+    background: #f3eeff;
+    color: var(--color-purple);
+}
+
 
 /* ============================================
    MAIN
@@ -727,7 +732,8 @@ main {
 
 .challenge-badge-hard {
     background: #fbeaf0;
-    color: #993556;
+    color: #993556; 
+    padding: var(--space-lg);
 }
 
 .challenge-badge-pts {
@@ -739,6 +745,8 @@ main {
     background: #e1f5ee;
     color: #0f6e56;
 }
+
+
 
 .stats-table-label,
 .stats-table-value,
