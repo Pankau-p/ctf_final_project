@@ -39,6 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'submit_flag') {
     $user = $user_db->get_user_by_id($user_id);
     $challenge = $user_db->get_challenge($challenge_id, $user_id);
 
+    if ($challenge['challengeID'] == 1005) {
+    header('X-Secret-Flag: CTF{headers_carry_secrets}');
+    }
+    
     if ($challenge_id == 1004) {
         setcookie('flag', 'CTF{cookies_are_not_secret}', time() + 3600);
     }

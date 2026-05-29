@@ -736,6 +736,7 @@ main {
     padding: var(--space-lg);
 }
 
+
 .challenge-badge-pts {
     background: #f3eeff;
     color: var(--color-purple);
