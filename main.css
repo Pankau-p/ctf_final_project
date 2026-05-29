@@ -917,7 +917,7 @@ main {
 .aside-stat {
     display: flex;
     flex-direction: column;
-    gap: var(--space-xs);
+    gap: var(--space-sm);
     margin-bottom: -0.8rem;
 }
 
@@ -926,7 +926,7 @@ main {
     text-transform: uppercase;
     letter-spacing: 0.08rem;
     color: #ffffff;
-    margin-bottom: -0.8rem;
+    
 }
 
 .aside-value {
@@ -935,7 +935,7 @@ main {
     font-weight: 700;
     color: #ffffff;
     line-height: 1;
-    margin-bottom: -0.8rem;
+    margin-bottom: -0.4rem;
 }
 
 .aside-value-sm {

@@ -69,9 +69,9 @@
             <aside class="challenge-aside">
 
                 <div class="aside-stat">
-                    <span class="aside-label">Solves</span>
-                    <span class="aside-value"><?= $challenge['totalSolves'] ?></span>
-                    <span class="aside-sub">people have solved this</span>
+                    <span class="aside-label">Solves:</span>
+                    <span class="aside-value"><?= $challenge['totalSolves'] ? : '0'?></span>
+                    <span class="aside-sub">people have solved this.</span>
                 </div>
 
                 <div class="aside-divider"></div>
