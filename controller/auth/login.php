@@ -1,8 +1,8 @@
 <?php
 // File: controller/auth/login.php
-// Author: 
+// Author: YK
 // Course: COMP 3541 - Web Programming
-// Date: 2026-05-19
+// Date: 2026-05-28
 // Final
 // Description: Controller for authenticating a user
 
@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'login') {
     } elseif (empty($password)) {
         $error = "Password is required.";
     } else {
+        // Validation passed, login a user
         $user = $user_db->get_user($email);
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user'] = true;

@@ -1,6 +1,19 @@
+<!--
+
+File: view/register/index.php
+
+Author: YK
+Course: COMP 3541 - Web Programming
+Date: 2026-05-28
+
+Final
+
+Description: View for the register page
+-->
 <main class="auth-main">
     <div class="form-card">
 
+        <!-- Login Card -->
         <div class="form-card-header">
             <h2 class="form-card-title">Register a new account.</h2>
             <p class="form-card-subtitle">Create a new OutRun account</p>
@@ -10,6 +23,7 @@
             <p class="form-error"><?php echo htmlspecialchars($error); ?></p>
         <?php endif; ?>
 
+        <!-- New User Form -->
         <form id="register-form" method="post" action="index.php">
             <div class="form-group">
                 <label class="form-label" for="username">Username</label>

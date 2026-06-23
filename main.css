@@ -1,33 +1,15 @@
+/* 
+File: index.php 
+Author: YK 
+Course: COMP 3541 - Web Programming 
+Date: 2026-05-28 
+Final 
+Description: Styles for the app
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600&family=DM+Sans:wght@400;500&display=swap');
 
-/* ============================================
-   NAMING CONVENTION
-   
-   Classes follow a simple flat pattern: block-element
-   
-   - One or two words, always lowercase, hyphen separated
-   - First word is the component: header, card, form, btn
-   - Second word is the part: header-brand, header-nav, form-input
-   - Modifiers use a second hyphen: btn-primary, btn-outline
-   - Utility classes are descriptive: text-muted, text-small
-   
-   Examples:
-     .header          -> the header component
-     .header-brand    -> the brand/logo inside the header
-     .header-nav      -> the nav inside the header
-     .btn             -> base button styles
-     .btn-primary     -> pink filled button
-     .btn-outline     -> outlined button
-     .form-input      -> a text input inside a form
-     .text-muted      -> muted/grey text utility
-   ============================================ */
-
-
-/* ============================================
-   CSS VARIABLES
-   Central place to control all colors, fonts,
-   sizes and spacing. Change here = changes everywhere.
-   ============================================ */
+/* CSS Variables */
 
 :root {
     /* --- Colors --- */
@@ -96,11 +78,8 @@
     --radius-lg: 0.75rem;
     /* 12px - cards, panels */
 
-/* ============================================
-   BUTTONS
-   Reusable button styles used across the app.
-   btn-primary = filled pink, btn-outline = bordered.
-   ============================================ */
+/* Buttons 
+   btn-primary = filled pink, btn-outline = bordered. */
 
     .btn {
         font-family: var(--font-body);
@@ -136,10 +115,7 @@
 }
 
 
-/* ============================================
-   RESET
-   Remove browser default styles so we start clean.
-   ============================================ */
+/* Reset */
 
 * {
     margin: 0;
@@ -148,10 +124,7 @@
 }
 
 
-/* ============================================
-   BASE
-   Default styles for the whole page.
-   ============================================ */
+/* Base - Default */
 
 body {
     font-family: var(--font-body);
@@ -195,8 +168,6 @@ h3 {
 
 /* ============================================
    HEADER
-   Top navigation bar. White surface, brand left,
-   nav links right.
    ============================================ */
 
 .header {
@@ -270,7 +241,6 @@ h3 {
 
 /* ============================================
    MAIN
-   Page content wrapper. Centered with max width.
    ============================================ */
 
 main {
@@ -297,9 +267,6 @@ main {
 
 /* ============================================
    LANDING PAGE
-   Hero section for the index.php landing page.
-   Centered layout with a title, subtitle and
-   two call to action buttons.
    ============================================ */
 
 .landing {
@@ -338,8 +305,6 @@ main {
 
 /* ============================================
    AUTH PAGES
-   Shared styles for login and register pages.
-   Centered card layout with form elements.
    ============================================ */
 
 .auth-main {
@@ -441,9 +406,6 @@ main {
 
 /* ============================================
    DASHBOARD PAGE
-   Two column layout. Left sidebar has runner
-   card, stats table and leaderboard. Right
-   column has progress bar and challenge list.
    ============================================ */
 
 /* --- Main Layout --- */
@@ -759,9 +721,6 @@ main {
 
 /* ============================================
    CHALLENGE PAGE
-   Single challenge view. Full width card with
-   dark top strip, main content left, dark aside
-   right with solves, attempts and hint reveal.
    ============================================ */
 
 /* --- Layout --- */
@@ -986,4 +945,46 @@ main {
     color: #c4b5fd;
     font-size: var(--font-size-sm);
     line-height: 1.6;
+}
+/* ============================================
+   ABOUT PAGE
+   ============================================ */
+
+.about-main {
+    max-width: 58.75rem;
+    margin: var(--space-xxl) auto;
+    padding: 0 var(--space-xl);
+}
+
+.about-card {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xxl) var(--space-xxl);
+    max-width: 48rem;
+    margin: 0 auto;
+}
+
+.about-header {
+    margin-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-xl);
+}
+
+.about-title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xxl);
+    color: var(--color-text);
+    margin-bottom: var(--space-sm);
+}
+
+.about-subtitle {
+    font-size: var(--font-size-md);
+    color: var(--color-purple);
+}
+
+.about-body p {
+    font-size: var(--font-size-md);
+    color: var(--color-text-muted);
+    line-height: 2;
 }

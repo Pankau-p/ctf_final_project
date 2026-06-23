@@ -1,8 +1,8 @@
 <?php
 // File: controller/auth/register.php
-// Author: 
+// Author: YK
 // Course: COMP 3541 - Web Programming
-// Date: 2026-05-19
+// Date: 2026-05-28
 // Final
 // Description: Controller for registering a new user
 
@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'register') {
         'password' => $password,
         ];
 
+    // Validation for all fields
     foreach ($required_fields as $field=>$value) {
         if (strlen($value) < 1 || strlen($value) > 50) {
             $errors[$field] = "Required, must be less than 51 characters.";
@@ -47,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'register') {
         $errors['password'] = "Required, must be between 6 and 21 characters.";
     }
 
+    // If validation passed, create a new user.
     if (empty($errors)) {
         $user = $user_db->register_user($username, 
             $firstName, $lastName, $countryCode,

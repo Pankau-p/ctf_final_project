@@ -1,10 +1,19 @@
+<!--
+
+File: view/dashboard/index.php
+
+Author: YK
+Course: COMP 3541 - Web Programming
+Date: 2026-05-28
+
+Final
+
+Description: View for the dashboard page
+-->
 <main class="dashboard-main">
     <div class="dashboard-layout">
 
-        <!-- ================================
-             LEFT COLUMN
-             Runner card, stats, leaderboard
-        ================================ -->
+        <!-- Left Column - Runner card, stats, leaderboard -->
         <aside class="dashboard-sidebar">
 
             <!-- Runner Card -->
@@ -50,10 +59,7 @@
 
         </aside>
 
-        <!-- ================================
-             RIGHT COLUMN
-             Progress bar and challenges
-        ================================ -->
+        <!-- Right Column - Progress bar and challenges -->
         <div class="dashboard-content">
 
             <!-- Progress Bar -->

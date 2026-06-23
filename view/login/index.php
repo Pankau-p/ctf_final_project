@@ -1,6 +1,20 @@
+<!--
+
+File: view/login/index.php
+
+Author: YK
+Course: COMP 3541 - Web Programming
+Date: 2026-05-28
+
+Final
+
+Description: View for the login page
+-->
+
 <main class="auth-main">
     <div class="form-card">
 
+        <!-- Login Card -->
         <div class="form-card-header">
             <h2 class="form-card-title">Welcome back</h2>
             <p class="form-card-subtitle">Sign in to your OutRun account</p>

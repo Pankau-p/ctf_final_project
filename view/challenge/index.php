@@ -1,13 +1,22 @@
+<!--
+
+File: view/challenge/index.php
+
+Author: YK
+Course: COMP 3541 - Web Programming
+Date: 2026-05-28
+
+Final
+
+Description: View for a challenge page
+-->
 <main class="challenge-main">
 
     <a href="index.php?action=dashboard" class="challenge-back">← Back to Dashboard</a>
 
     <div class="challenge-card">
 
-        <!-- ================================
-             CARD TOP
-             Difficulty and points badges
-        ================================ -->
+        <!-- Card Top - Difficulty and points -->
         <div class="challenge-card-top">
             <span class="challenge-badge challenge-badge-<?= $challenge['difficulty'] ?>"><?= ucfirst($challenge['difficulty']) ?></span>
             <span class="challenge-badge challenge-badge-pts"><?= $challenge['points'] ?>pts</span>
@@ -15,10 +24,7 @@
 
         <div class="challenge-card-body">
 
-            <!-- ================================
-                 MAIN CONTENT
-                 Title, description, flag submit
-            ================================ -->
+            <!-- Main Content - Title, description, flag submit -->
             <div class="challenge-content">
 
                 <h1 class="challenge-title"><?= htmlspecialchars($challenge['title']) ?></h1>
@@ -56,16 +62,12 @@
                     
                 </div>
                 
-            <!-- ================================
-                 DIVIDER
-            ================================ -->
+            <!-- Divider -->
+
             <div class="challenge-divider"></div>
             <!--Check beneath the surface CTF{hidden_in_plain_sight} -->
 
-            <!-- ================================
-                 ASIDE
-                 Solves, attempts, hint
-            ================================ -->
+            <!-- Aside - Solves, attempts, hint -->
             <aside class="challenge-aside">
 
                 <div class="aside-stat">

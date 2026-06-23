@@ -1,9 +1,9 @@
 <?php
 // File: model/auth_db.php
 //
-// Author: 
+// Author: YK
 // Course: COMP 3541 - Web Programming
-// Date: 2026-05-19
+// Date: 2026-05-28
 //
 // Final
 //
@@ -29,10 +29,8 @@ class UserDB {
             $statement->closeCursor();
             return $user;
         } catch (PDOException $e) {
-            die($e->getMessage());
-            //$error_message = $e->getMessage();
-            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');            
-            //exit();
+            error_log($e->getMessage());
+            die("A database error occurred. Please try again later.");
         }
     }
 
@@ -46,10 +44,8 @@ class UserDB {
             $statement->closeCursor();
             return $countries;
         } catch (PDOException $e) {
-            die($e->getMessage());
-            //$error_message = $e->getMessage();
-            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
-            //exit();
+            error_log($e->getMessage());
+            die("A database error occurred. Please try again later.");
         }
     }
 
@@ -76,13 +72,13 @@ class UserDB {
             $statement->closeCursor();
             return $this->db->lastInsertId();
         } catch (PDOException $e) {
-            die($e->getMessage());
-            //$error_message = $e->getMessage();
-            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
-            //exit();
+            error_log($e->getMessage());
+            die("A database error occurred. Please try again later.");
         }
     }
 
+
+    // Get a user with a user id
     public function get_user_by_id($user_id) {
         try {
             $query = 'SELECT * FROM users
@@ -94,13 +90,15 @@ class UserDB {
             $statement->closeCursor();
             return $user;     
         } catch (PDOException $e) {
-            die($e->getMessage());
-            //$error_message = $e->getMessage();
-            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
-            //exit();
+            error_log($e->getMessage());
+            die("A database error occurred. Please try again later.");
         }
     }
 
+    // Gets total stats for a given user:
+    // totalPoints (sum of points for solved challenges),
+    // totalSolved (count of solved challenges),
+    // totalAttempts (sum of all attempts across challenges).
     public function get_user_stats($user_id) {
         try {
             $query = 'SELECT 
@@ -117,13 +115,14 @@ class UserDB {
             $statement->closeCursor();
             return $user_stats;  
         } catch (PDOException $e) {
-            die($e->getMessage());
-            //$error_message = $e->getMessage();
-            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
-            //exit();
+            error_log($e->getMessage());
+            die("A database error occurred. Please try again later.");
         }
     }
 
+    // Returns progress data for a given user:
+    // solved (number of challenges the user has solved),
+    // total (total number of challenges available in the platform).
     public function get_progress($user_id) {
         try {
             $query = 'SELECT
@@ -138,13 +137,15 @@ class UserDB {
             $statement->closeCursor();
             return $user_progress;  
         } catch (PDOException $e) {
-            die($e->getMessage());
-            //$error_message = $e->getMessage();
-            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
-            //exit();
+            error_log($e->getMessage());
+            die("A database error occurred. Please try again later.");
         }
     }
 
+
+    // Returns all challenges with the solved status for a given user.
+    // Uses a LEFT JOIN so challenges the user hasn't attempted yet
+    // still appear, with solved defaulting to 0 via COALESCE.
     public function get_challenges_with_status($user_id) {
         try {
             $query = 'SELECT c.challengeID, c.title, c.difficulty, c.points,
@@ -160,13 +161,14 @@ class UserDB {
             $statement->closeCursor();
             return $challenge_with_status; 
         } catch (PDOException $e) {
-            die($e->getMessage());
-            //$error_message = $e->getMessage();
-            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
-            //exit();
+            error_log($e->getMessage());
+            die("A database error occurred. Please try again later.");
         }
     }
 
+    // Returns all users ranked by total points in descending order.
+    // Uses LEFT JOINs so users with no solved challenges still appear
+    // with 0 points via COALESCE.
     public function  get_leaderboard() {
         try {
             $query = 'SELECT u.username, 
@@ -182,13 +184,15 @@ class UserDB {
             $statement->closeCursor();
             return $leaderboard; 
         } catch (PDOException $e) {
-            die($e->getMessage());
-            //$error_message = $e->getMessage();
-            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
-            //exit();
+            error_log($e->getMessage());
+            die("A database error occurred. Please try again later.");
         }
     }
 
+    // Returns a single challenge by ID with the current user's solve status.
+    // Includes solved, solved_at, and attempts from user_challenges for this user.
+    // Also includes totalSolves (how many users have solved it) via a subquery.
+    // Uses LEFT JOINs so the challenge is returned even if the user hasn't attempted it.
     public function get_challenge($challenge_id, $user_id) {
         try { 
             $query = 'SELECT c.*, 
@@ -211,14 +215,17 @@ class UserDB {
             $statement->closeCursor();
             return $challenge; 
         } catch (PDOException $e) {
-            die($e->getMessage());
-            //$error_message = $e->getMessage();
-            //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
-            //exit();
-        }               
+            error_log($e->getMessage());
+            die("A database error occurred. Please try again later.");
+        }              
     }   
 
-public function submit_flag($user_id, $challenge_id) {
+
+    // Records a correct flag submission for a user and challenge.
+    // Uses INSERT ... ON DUPLICATE KEY UPDATE so if the user has
+    // already attempted the challenge, it updates the existing row
+    // rather than inserting a duplicate, setting solved = 1 and solved_at to now.
+    public function submit_flag($user_id, $challenge_id) {
     try {
         $query = 'INSERT INTO user_challenges (userID, challengeID, solved, solved_at)
                   VALUES (:user_id, :challenge_id, 1, NOW())
@@ -231,10 +238,8 @@ public function submit_flag($user_id, $challenge_id) {
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
-        die($e->getMessage());
-        //$error_message = $e->getMessage();
-        //include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/database_error.php');   
-        //exit();
+            error_log($e->getMessage());
+            die("A database error occurred. Please try again later.");
         }
     }
 }

@@ -1,3 +1,15 @@
+<!--
+
+File: view/shared/header/index.php
+
+Author: YK
+Course: COMP 3541 - Web Programming
+Date: 2026-05-28
+
+Final
+
+Description: View for the header
+-->
 <?php $action = $_GET['action'] ?? ''; ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +20,7 @@
 </head>
 <body>
 
+<!-- Left Side -->
 <header class="header">
     <a href="/ctf/index.php" class="header-brand">
         <div class="header-logo-text">
@@ -16,6 +29,7 @@
         </div>
     </a>
 
+    <!-- Nav Buttons -->
     <nav class="header-nav">
 
         <?php if (isset($_SESSION['user'])): ?>
