@@ -44,6 +44,7 @@ Description: View for a challenge page
                         <form method="post" action="index.php">
                             <input type="hidden" name="action" value="submit_flag">
                             <input type="hidden" name="challengeID" value="<?= $challenge['challengeID'] ?>">
+                            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                             <input
                                 type="text"
                                 name="flag"

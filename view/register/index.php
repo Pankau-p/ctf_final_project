@@ -60,6 +60,7 @@ Description: View for the register page
                 <input type="password" id="password" name="password" class="form-input" placeholder="••••••••" required>
             </div>
             <input type="hidden" name="action" value="register">
+            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
             <button type="submit" class="btn btn-primary btn-full">Register</button>
         </form>
 

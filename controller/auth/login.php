@@ -14,23 +14,28 @@ $error = null;
 $action = $_POST['action'] ?? $_GET['action'] ?? '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'login') {
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
-    if (empty($email)) {
-        $error = "Email is required.";
-    } elseif (empty($password)) {
-        $error = "Password is required.";
+    if (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+        $error = "Invalid request.";
     } else {
-        // Validation passed, login a user
-        $user = $user_db->get_user($email);
-        if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['user'] = true;
-            $_SESSION['user_firstName'] = $user['firstName'];
-            $_SESSION['user_id'] = $user['userID'];
-            header('Location: /ctf/index.php?action=dashboard');
-            exit();
+        $email = $_POST['email'] ?? '';
+        $password = $_POST['password'] ?? '';
+        if (empty($email)) {
+            $error = "Email is required.";
+        } elseif (empty($password)) {
+            $error = "Password is required.";
         } else {
-            $error = "Invalid email or password.";
+            // Validation passed, login a user
+            $user = $user_db->get_user($email);
+            if ($user && password_verify($password, $user['password'])) {
+                session_regenerate_id(true);
+                $_SESSION['user'] = true;
+                $_SESSION['user_firstName'] = $user['firstName'];
+                $_SESSION['user_id'] = $user['userID'];
+                header('Location: /ctf/index.php?action=dashboard');
+                exit();
+            } else {
+                $error = "Invalid email or password.";
+            }
         }
     }
 }

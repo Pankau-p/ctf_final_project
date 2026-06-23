@@ -22,45 +22,49 @@ $password = $_POST['password'] ?? '';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'register') {
-
-    $errors = [];
-
-    $required_fields = [  
-        'username' => $username,  
-        'firstName' => $firstName,
-        'lastName' => $lastName,
-        'email' => $email,
-        'password' => $password,
-        ];
-
-    // Validation for all fields
-    foreach ($required_fields as $field=>$value) {
-        if (strlen($value) < 1 || strlen($value) > 50) {
-            $errors[$field] = "Required, must be less than 51 characters.";
-        }
-    }
-
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $errors['email'] = "Invalid Email.";
-    } 
-
-    if(strlen($password) < 6 || strlen($password) > 20) {
-        $errors['password'] = "Required, must be between 6 and 21 characters.";
-    }
-
-    // If validation passed, create a new user.
-    if (empty($errors)) {
-        $user = $user_db->register_user($username, 
-            $firstName, $lastName, $countryCode,
-            $email, $password);
-        $_SESSION['user'] = true;
-        $_SESSION['user_firstName'] = $firstName;
-        $_SESSION['user_id'] = $user;
-        header('Location: /ctf/index.php?action=dashboard');
-        exit();
+    if (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+        $error = "Invalid request.";
     } else {
-        $error = "Something went wrong... Try Again.";
-    }
+        $errors = [];
+
+        $required_fields = [  
+            'username' => $username,  
+            'firstName' => $firstName,
+            'lastName' => $lastName,
+            'email' => $email,
+            'password' => $password,
+            ];
+
+        // Validation for all fields
+        foreach ($required_fields as $field=>$value) {
+            if (strlen($value) < 1 || strlen($value) > 50) {
+                $errors[$field] = "Required, must be less than 51 characters.";
+            }
+        }
+
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = "Invalid Email.";
+        } 
+
+        if(strlen($password) < 6 || strlen($password) > 20) {
+            $errors['password'] = "Required, must be between 6 and 21 characters.";
+        }
+
+        // If validation passed, create a new user.
+        if (empty($errors)) {
+            $user = $user_db->register_user($username, 
+                $firstName, $lastName, $countryCode,
+                $email, $password);
+            session_regenerate_id(true);
+            $_SESSION['user'] = true;
+            $_SESSION['user_firstName'] = $firstName;
+            $_SESSION['user_id'] = $user;
+            header('Location: /ctf/index.php?action=dashboard');
+            exit();
+        } else {
+            $error = "Something went wrong... Try Again.";
+        }
+    }   
 }
 
 $countries = $user_db->get_countries();

@@ -12,6 +12,10 @@
     // Start a session
     session_start();
 
+    if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+    
     require_once('./config/db.php');
 
     // Determine action from POST or GET
