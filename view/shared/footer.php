@@ -13,6 +13,6 @@ Description: View for the footer
 <footer class="footer">
     <p>&copy; <?= date('Y') ?> OutRun CTF</p>
 </footer>
-
+<script>hljs.highlightAll();</script>
 </body>
 </html>

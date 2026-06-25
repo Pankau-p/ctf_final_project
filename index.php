@@ -45,6 +45,12 @@
     } elseif ($action === 'about') {
         include('view/about/index.php');
 
+    } elseif ($action === 'blog') {
+        include('controller/blog/index.php');
+    
+    } elseif ($action === 'post') {
+        include('controller/blog/post.php');
+
     } else { 
         include('view/shared/header.php');
         ?>

@@ -17,6 +17,8 @@ Description: View for the header
     <meta charset="UTF-8">
     <title>OutRun CTF</title>
     <link rel="stylesheet" href="/ctf/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 </head>
 <body>
 
@@ -38,12 +40,16 @@ Description: View for the header
                 class="<?= $action === 'dashboard' ? 'active' : '' ?>">
                 Dashboard
             </a>
+            <a href="/blog" 
+                class="<?= $action === 'blog' || $action === 'post' ? 'active' : '' ?>">
+                Resources</a>
             <a href="/ctf/index.php?action=about"
                 class="<?= $action === 'about' ? 'active' : '' ?>">
                 About</a>
             <a href="/ctf/index.php?action=logout">Logout</a>
 
         <?php else: ?>
+            <a href="/blog" class="<?= $action === 'blog' || $action === 'post' ? 'active' : '' ?>">Resources</a>
             <a href="/ctf/index.php?action=about">About</a>
             <a href="/ctf/index.php?action=login">Login</a>
             <a href="/ctf/index.php?action=register" class="btn btn-primary">Sign Up</a>
