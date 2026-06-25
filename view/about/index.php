@@ -10,7 +10,11 @@ Final
 
 Description: View for the about page
 -->
-<?php include 'view/shared/header.php'; ?>
+<?php 
+    $page_title = 'About | OutRun CTF';
+    $page_description = 'Learn about OutRun CTF, a beginner-friendly capture the flag training platform.';
+    include 'view/shared/header.php'; 
+?>
 
 <main class="about-main">
 

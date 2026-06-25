@@ -1,4 +1,10 @@
 User-agent: *
+Allow: /
+Disallow: /ctf/controller/
+Disallow: /ctf/model/
+Disallow: /ctf/config/
+Disallow: /ctf/index.php?action=dashboard
+Disallow: /ctf/index.php?action=logout
 Disallow: /ctf/admin/
 Disallow: /ctf/flags/
 

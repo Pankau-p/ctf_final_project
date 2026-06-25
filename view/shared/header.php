@@ -10,12 +10,21 @@ Final
 
 Description: View for the header
 -->
-<?php $action = $_GET['action'] ?? ''; ?>
+<?php $action = $_GET['action'] ?? ''; 
+$page_title = $page_title ?? 'OutRun CTF — CTF Training Platform';
+$page_description = $page_description ?? 'Learn real hacking skills through fun, beginner-friendly challenges. Solve puzzles, capture flags, and climb the leaderboard.';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>OutRun CTF</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<?= htmlspecialchars($page_description) ?>">
+    <meta property="og:title" content="<?= htmlspecialchars($page_title) ?>">
+    <meta property="og:description" content="<?= htmlspecialchars($page_description) ?>">
+    <meta property="og:type" content="website">
+    <title><?= htmlspecialchars($page_title) ?></title>
+    <link rel="icon" type="image/x-icon" href="/ctf/favicon.ico">
     <link rel="stylesheet" href="/ctf/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>

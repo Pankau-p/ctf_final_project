@@ -52,6 +52,8 @@
         include('controller/blog/post.php');
 
     } else { 
+        $page_title = 'OutRun CTF — CTF Training Platform';
+        $page_description = 'Learn real hacking skills through fun, beginner-friendly challenges. Solve puzzles, capture flags, and climb the leaderboard.';
         include('view/shared/header.php');
         ?>
         <main class="landing">
