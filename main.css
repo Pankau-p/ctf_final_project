@@ -12,6 +12,14 @@ Description: Styles for the app
 /* CSS Variables */
 
 :root {
+    /* --- Landing dark variables ---*/
+    --color-landing-bg: #2d1f5e;
+    --color-landing-surface: rgba(255, 255, 255, 0.05);
+    --color-landing-text: #ffffff;
+    --color-landing-muted: #a78bfa;
+    --color-landing-border: rgba(255, 255, 255, 0.08);
+    --color-btn-bold: #ff2d6b;
+    --color-btn-bold-outline: #38bdf8;
     /* --- Colors --- */
     --color-bg: #ebe4ff;
     /* page background, soft lavender */
@@ -22,7 +30,7 @@ Description: Styles for the app
 
     --color-text: #1e1b3a;
     /* main body text, dark navy */
-    --color-text-muted: #6b5fa0;
+    --color-text-muted: #564f6f;
     /* secondary text, hints, footer */
     --color-text-nav: #4a4070;
     /* nav links */
@@ -172,7 +180,7 @@ h3 {
 
 .header {
     padding: var(--space-lg) calc((100% - 58.75rem) / 2 + var(--space-xl));
-    background: var(--color-bg-surface);
+    background: var(--color-landing-bg);
     border-bottom: 1px solid var(--color-border);
     height: auto;
     display: flex;
@@ -198,7 +206,7 @@ h3 {
     font-family: var(--font-heading);
     font-weight: 700;
     font-size: var(--font-size-xxl);
-    color: var(--color-text);
+    color: var(--color-landing-text);
     line-height: 1;
 }
 
@@ -212,7 +220,7 @@ h3 {
 
 .header-logo-tagline {
     font-size: var(--font-size-xs);
-    color: var(--color-text-muted);
+    color: var(--color-landing-text);
     font-family: var(--font-body);
     letter-spacing: 0.03rem;
 }
@@ -222,7 +230,7 @@ h3 {
     font-family: var(--font-body);
     font-size: var(--font-size-base);
     font-weight: 500;
-    color: var(--color-text-nav);
+    color: var(--color-landing-text);
     text-decoration: none;
     padding: var(--space-xs) var(--space-md);
     border-radius: var(--radius-md);
@@ -257,43 +265,84 @@ main {
    ============================================ */
 
 .footer {
+    background: var(--color-landing-bg);
     text-align: center;
     padding: var(--space-lg);
     color: var(--color-text-muted);
     font-size: var(--font-size-sm);
     border-top: 1px solid var(--color-border);
-    margin-top: var(--space-xl);
+    margin-top: 0;
 }
 
 /* ============================================
    LANDING PAGE
-   ============================================ */
+   ============================================ 
+*/
 
 .landing {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 70vh;
-    
+    background: var(--color-landing-bg);
+    min-height: calc(100vh - 6rem);
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
 }
 
 .landing-hero {
-    text-align: center;
-    max-width: 40rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 12rem);
+    overflow: hidden;
+    padding: var(--space-xxl) var(--space-xl);
 }
 
+.landing-grid {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
 
+.landing-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 42rem;
+}
+
+.landing-tag {
+    display: inline-block;
+    font-size: var(--font-size-xs);
+    background: rgba(139, 92, 246, 0.2);
+    color: #c084fc;
+    border: 0.5px solid rgba(139, 92, 246, 0.4);
+    border-radius: 99px;
+    padding: var(--space-xs) var(--space-md);
+    margin-bottom: var(--space-md);
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+}
 
 .landing-title {
     font-family: var(--font-heading);
     font-size: var(--font-size-xxl);
-    color: var(--color-text);
-    margin-bottom: var(--space-sm);
+    font-weight: 700;
+    color: var(--color-landing-text);
+    line-height: 1.1;
+    margin-bottom: var(--space-md);
+}
+
+.landing-title-accent {
+    color: var(--color-btn-bold);
 }
 
 .landing-subtitle {
-    font-size: var(--font-size-md);
-    color: var(--color-text-muted);
+    font-size: var(--font-size-base);
+    color: var(--color-landing-muted);
+    line-height: 1.8;
     margin-bottom: var(--space-xl);
 }
 
@@ -302,6 +351,50 @@ main {
     gap: var(--space-md);
     justify-content: center;
 }
+
+.btn-hero-primary {
+    background: var(--color-btn-bold);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-xl);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 0.15s;
+    display: inline-block;
+}
+
+.btn-hero-primary:hover {
+    opacity: 0.85;
+    color: #ffffff;
+}
+
+.btn-hero-outline {
+    background: transparent;
+    color: var(--color-btn-bold-outline);
+    border: 2px solid var(--color-btn-bold-outline);
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-xl);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 0.15s;
+    display: inline-block;
+}
+
+.btn-hero-outline:hover {
+    opacity: 0.75;
+    color: var(--color-btn-bold-outline);
+}
+
+
 
 /* ============================================
    AUTH PAGES
@@ -987,4 +1080,271 @@ main {
     font-size: var(--font-size-md);
     color: var(--color-text-muted);
     line-height: 2;
+
+}
+
+/* ============================================
+   BLOG / RESOURCES PAGE
+   ============================================ */
+
+.blog-main {
+    max-width: 58.75rem;
+    min-height: calc(100vh - 20rem);
+    margin: var(--space-xxl) auto;
+    padding: 0 var(--space-xl);
+}
+
+.blog-header {
+    margin-bottom: var(--space-xl);
+}
+
+.blog-title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xxl);
+    color: var(--color-text);
+    margin-bottom: var(--space-xs);
+}
+
+.blog-subtitle {
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+}
+
+/* --- Grid --- */
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+}
+
+/* --- Card --- */
+
+.blog-card {
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: 0 2px 12px rgba(139, 92, 246, 0.1);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.blog-card:hover {
+    box-shadow: 0 4px 24px rgba(139, 92, 246, 0.18);
+    transform: translateY(-2px);
+}
+
+/* --- Category --- */
+
+.blog-card-category {
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+}
+
+.blog-category-web {
+    color: var(--color-pink);
+}
+
+.blog-category-crypto {
+    color: var(--color-purple);
+}
+
+.blog-category-tools {
+    color: var(--color-blue);
+}
+
+.blog-category-misc {
+    color: var(--color-text-muted);
+}
+
+/* --- Title --- */
+
+.blog-card-title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.3;
+    flex: 1;
+}
+
+/* --- Footer --- */
+
+.blog-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--space-sm);
+}
+
+.blog-card-tags {
+    display: flex;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+}
+
+.blog-tag {
+    font-size: var(--font-size-xs);
+    background: #e1f5ee;
+    color: #0f6e56;
+    padding: 2px var(--space-xs);
+    border-radius: var(--radius-sm);
+}
+
+.blog-card-date {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+/* ============================================
+   BLOG POST PAGE
+   Centered reading layout. Clean white card,
+   meta badges at top, divider, then styled
+   body content for headings, paragraphs,
+   code blocks, blockquotes and lists.
+   ============================================ */
+
+.post-main {
+    max-width: 88.75rem;
+    margin: var(--space-xxl) auto;
+    padding: 0 var(--space-xl);
+    min-height: calc(100vh - 12rem);
+}
+
+.post-wrap {
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xxl);
+    max-width: 80rem;
+    margin: 0 auto;
+    box-shadow: 0 2px 12px rgba(139, 92, 246, 0.08);
+}
+
+/* --- Meta --- */
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.post-date {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}
+
+/* --- Title --- */
+
+.post-title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.2;
+    margin-bottom: var(--space-md);
+}
+
+/* --- Divider --- */
+
+.post-divider {
+    height: 1px;
+    background: var(--color-border);
+    margin: var(--space-lg) 0;
+}
+
+/* --- Body Content --- */
+
+.post-body {
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    line-height: 1.9;
+}
+
+.post-body p {
+    margin-bottom: var(--space-lg);
+}
+
+.post-body h2 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+}
+
+.post-body h3 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
+}
+
+.post-body ul,
+.post-body ol {
+    padding-left: var(--space-xl);
+    margin-bottom: var(--space-lg);
+}
+
+.post-body ul li,
+.post-body ol li {
+    margin-bottom: var(--space-xs);
+    line-height: 1.8;
+}
+
+.post-body code {
+    font-family: monospace;
+    font-size: var(--font-size-sm);
+    background: #f7f4ff;
+    color: var(--color-purple);
+    padding: 2px var(--space-xs);
+    border-radius: var(--radius-sm);
+}
+
+.post-body pre {
+    background: #1e1b3a;
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    margin: var(--space-lg) 0;
+    overflow-x: auto;
+}
+
+.post-body pre code {
+    background: none;
+    color: #c4b5fd;
+    font-size: var(--font-size-sm);
+    padding: 0;
+}
+
+.post-body blockquote {
+    border-left: 3px solid var(--color-purple);
+    padding-left: var(--space-lg);
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin: var(--space-lg) 0;
+}
+
+.post-body a {
+    color: var(--color-purple);
+    text-decoration: underline;
+}
+
+.post-body a:hover {
+    color: var(--color-pink);
+}
+
+.post-body strong {
+    color: var(--color-text);
+    font-weight: 600;
 }

@@ -2,34 +2,39 @@
 File: view/blog/index.php
 Description: Blog index page - list of all posts
 -->
-<main>
-    <h1>Blog</h1>
-    <p class="landing-subtitle">Notes, tools, and aha moments from learning pentesting.</p>
+
+<main class="blog-main">
+
+    <div class="blog-header">
+        <h1 class="blog-title">Resources</h1>
+        <p class="blog-subtitle">Notes, tools, and aha moments from learning pentesting.</p>
+    </div>
 
     <?php if (empty($posts)): ?>
         <p class="form-error">No posts yet.</p>
     <?php else: ?>
-        <div class="challenge-list">
+        <div class="blog-grid">
             <?php foreach ($posts as $post): ?>
-                <div class="challenge-row">
-                    <span class="challenge-name">
-                        <a href="/ctf/blog/<?= htmlspecialchars($post['slug']) ?>">
-                            <?= htmlspecialchars($post['title']) ?>
-                        </a>
-                    </span>
-                    <div class="challenge-meta">
-                        <?php if ($post['category']): ?>
-                            <span class="challenge-badge challenge-badge-pts"><?= htmlspecialchars($post['category']) ?></span>
-                        <?php endif; ?>
-                        <?php if (!empty($post['tags'])): ?>
-                            <?php foreach ($post['tags'] as $tag): ?>
-                                <span class="challenge-badge challenge-badge-easy"><?= htmlspecialchars($tag) ?></span>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                        <span class="challenge-badge"><?= htmlspecialchars($post['date']) ?></span>
+                <a href="/ctf/blog/<?= htmlspecialchars($post['slug']) ?>" class="blog-card">
+                    <?php if ($post['category']): ?>
+                        <span class="blog-card-category blog-category-<?= strtolower(htmlspecialchars($post['category'])) ?>">
+                            <?= htmlspecialchars($post['category']) ?>
+                        </span>
+                    <?php endif; ?>
+                    <h2 class="blog-card-title"><?= htmlspecialchars($post['title']) ?></h2>
+                    <div class="blog-card-footer">
+                        <div class="blog-card-tags">
+                            <?php if (!empty($post['tags'])): ?>
+                                <?php foreach ($post['tags'] as $tag): ?>
+                                    <span class="blog-tag"><?= htmlspecialchars($tag) ?></span>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
+                        <span class="blog-card-date"><?= htmlspecialchars($post['date']) ?></span>
                     </div>
-                </div>
+                </a>
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
+
 </main>
