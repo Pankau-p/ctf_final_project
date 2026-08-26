@@ -49,7 +49,7 @@ $page_description = $page_description ?? 'Learn real hacking skills through fun,
                 class="<?= $action === 'dashboard' ? 'active' : '' ?>">
                 Dashboard
             </a>
-            <a href="/blog" 
+            <a href="/ctf/blog" 
                 class="<?= $action === 'blog' || $action === 'post' ? 'active' : '' ?>">
                 Resources</a>
             <a href="/ctf/index.php?action=about"
@@ -58,7 +58,7 @@ $page_description = $page_description ?? 'Learn real hacking skills through fun,
             <a href="/ctf/index.php?action=logout">Logout</a>
 
         <?php else: ?>
-            <a href="/blog" class="<?= $action === 'blog' || $action === 'post' ? 'active' : '' ?>">Resources</a>
+            <a href="/ctf/blog" class="<?= $action === 'blog' || $action === 'post' ? 'active' : '' ?>">Resources</a>
             <a href="/ctf/index.php?action=about">About</a>
             <a href="/ctf/index.php?action=login">Login</a>
             <a href="/ctf/index.php?action=register" class="btn btn-primary">Sign Up</a>
