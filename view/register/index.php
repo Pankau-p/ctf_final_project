@@ -52,10 +52,10 @@ Description: View for the register page
                 <label class="form-label" for="email">Email</label>
                 <input type="email" id="email" name="email" class="form-input" required>
             </div>
-           <div class="form-group">
+           <!-- <div class="form-group">
                 <label class="form-label" for="email">Avatar Url</label>
                 <input type="url" id="avatar_url" name="avatar_url" class="form-input" placeholder="https://example.com/avatar.jpg">            </div>
-            <div class="form-group">
+            <div class="form-group"> -->
                 <label class="form-label" for="password">Password</label>
                 <input type="password" id="password" name="password" class="form-input" placeholder="••••••••" required>
             </div>
