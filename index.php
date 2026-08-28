@@ -11,7 +11,7 @@
 
     // Start a session
     session_start();
-
+    define('BASE_URL', '/ctf');
     if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     }
@@ -30,7 +30,7 @@
 
     } elseif ($action === 'logout') {
         session_destroy();
-        header('Location: /ctf/index.php');
+        header('Location: ' . BASE_URL . '/index.php');
         exit();
 
     } elseif ($action === 'register') {
@@ -73,9 +73,8 @@
                     <h1 class="landing-title">Capture The Flag.<br><span class="landing-title-accent">Start your run.</span></h1>
                     <p class="landing-subtitle">Learn real hacking skills through fun, beginner-friendly challenges. Solve puzzles, capture flags, and climb the leaderboard.</p>
                     <div class="landing-actions">
-                        <a href="/ctf/index.php?action=register" class="btn btn-hero-primary">Get Started</a>
-                        <a href="/ctf/index.php?action=login" class="btn btn-hero-outline">Login</a>
-                    </div>
+                        <a href="<?= BASE_URL ?>/index.php?action=register" class="btn btn-hero-primary">Get Started</a>
+                        <a href="<?= BASE_URL ?>/index.php?action=login" class="btn btn-hero-outline">Login</a>                    </div>
                 </div>
 
             </div>

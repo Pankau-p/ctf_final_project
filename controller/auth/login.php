@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'login') {
                 $_SESSION['user'] = true;
                 $_SESSION['user_firstName'] = $user['firstName'];
                 $_SESSION['user_id'] = $user['userID'];
-                header('Location: /ctf/index.php?action=dashboard');
+                header('Location: ' . BASE_URL . '/index.php?action=dashboard');
                 exit();
             } else {
                 $error = "Invalid email or password.";

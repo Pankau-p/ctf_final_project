@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'register') {
             $_SESSION['user'] = true;
             $_SESSION['user_firstName'] = $firstName;
             $_SESSION['user_id'] = $user;
-            header('Location: /ctf/index.php?action=dashboard');
+            header('Location: ' . BASE_URL . '/index.php?action=dashboard');
             exit();
         } else {
             $error = "Something went wrong... Try Again.";
