@@ -12,7 +12,7 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ctf/model/UserDB.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/model/UserDB.php');
 $user_db = new UserDB($db);
 
 // Get all required data for the user
@@ -31,6 +31,6 @@ foreach ($leaderboard as $entry) {
 $stats['rank'] = $rank;
 
 // Render the register form (with error if set)
-include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/header.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/dashboard/index.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/footer.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/view/shared/header.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/view/dashboard/index.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/view/shared/footer.php');
