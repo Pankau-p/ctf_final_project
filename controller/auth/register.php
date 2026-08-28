@@ -6,7 +6,7 @@
 // Final
 // Description: Controller for registering a new user
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ctf/model/UserDB.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/model/UserDB.php');
 $user_db = new UserDB($db);
 $error = null;
 
@@ -78,6 +78,6 @@ $formData = [
 ];
 
 // Render the register form (with error if set)
-include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/header.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/register/index.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/footer.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/view/shared/header.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/view/register/index.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/view/shared/footer.php');

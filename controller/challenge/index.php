@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ctf/model/UserDB.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/model/UserDB.php');
 $user_db = new UserDB($db);
 $error = null;
 
@@ -78,6 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'submit_flag') {
 
 
 // Render the register form (with error if set)
-include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/header.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/challenge/index.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/footer.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/view/shared/header.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/view/challenge/index.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/view/shared/footer.php');

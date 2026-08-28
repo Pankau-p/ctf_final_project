@@ -6,7 +6,7 @@
 // Final
 // Description: Controller for authenticating a user
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ctf/model/UserDB.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/model/UserDB.php');
 $user_db = new UserDB($db);
 $error = null;
 
@@ -41,6 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'login') {
 }
 
 // Render the login form (with error if set)
-include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/header.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/login/index.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/ctf/view/shared/footer.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/view/shared/header.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/view/login/index.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/view/shared/footer.php');
