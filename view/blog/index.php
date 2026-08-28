@@ -15,7 +15,7 @@ Description: Blog index page - list of all posts
     <?php else: ?>
         <div class="blog-grid">
             <?php foreach ($posts as $post): ?>
-                <a href="/ctf/blog/<?= htmlspecialchars($post['slug']) ?>" class="blog-card">
+                <a href="<?= BASE_URL ?>/blog/<?= htmlspecialchars($post['slug']) ?>" class="blog-card">
                     <?php if ($post['category']): ?>
                         <span class="blog-card-category blog-category-<?= strtolower(htmlspecialchars($post['category'])) ?>">
                             <?= htmlspecialchars($post['category']) ?>

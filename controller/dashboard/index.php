@@ -8,7 +8,7 @@
 
 // Check session variable, user is set, otherwise forward to login page
 if (!isset($_SESSION['user'])) {
-    header('Location: /ctf/index.php?action=login');
+    header('Location: ' . BASE_URL . '/index.php?action=login');
     exit();
 }
 
