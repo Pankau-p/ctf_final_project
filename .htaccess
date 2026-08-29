@@ -1,4 +1,4 @@
 RewriteEngine On
-RewriteBase /ctf/
+RewriteBase /
 RewriteRule ^blog$ index.php?action=blog [L,QSA]
 RewriteRule ^blog/([a-zA-Z0-9_-]+)$ index.php?action=post&slug=$1 [L,QSA]
