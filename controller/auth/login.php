@@ -17,24 +17,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'login') {
     if (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
         $error = "Invalid request.";
     } else {
-        $email = $_POST['email'] ?? '';
-        $password = $_POST['password'] ?? '';
-        if (empty($email)) {
-            $error = "Email is required.";
-        } elseif (empty($password)) {
-            $error = "Password is required.";
+        // Rate Limiting for login
+        if (!isset($_SESSION['login_attempts'])) {
+            $_SESSION['login_attempts'] = ['count' => 0, 'time' => time()];
+        }
+        if (time() - $_SESSION['login_attempts']['time'] > 300) {
+            $_SESSION['login_attempts'] = ['count' => 0, 'time' => time()];
+        }
+        if ($_SESSION['login_attempts']['count'] >= 5) {
+            $error = "For security reasons, we feel you have had too many attempts. Please wait 5 minutes and then try again. If you are having trouble signing in, email us at theartoflife07@gmail.com to replace your password. We are working on having a password reset option soon. Please stay tuned .";
         } else {
-            // Validation passed, login a user
-            $user = $user_db->get_user($email);
-            if ($user && password_verify($password, $user['password'])) {
-                session_regenerate_id(true);
-                $_SESSION['user'] = true;
-                $_SESSION['user_firstName'] = $user['firstName'];
-                $_SESSION['user_id'] = $user['userID'];
-                header('Location: ' . BASE_URL . '/index.php?action=dashboard');
-                exit();
+            $email = $_POST['email'] ?? '';
+            $password = $_POST['password'] ?? '';
+            if (empty($email)) {
+                $error = "Email is required.";
+            } elseif (empty($password)) {
+                $error = "Password is required.";
             } else {
-                $error = "Invalid email or password.";
+                // Validation passed, login a user
+                $user = $user_db->get_user($email);
+                if ($user && password_verify($password, $user['password'])) {
+                    session_regenerate_id(true);
+                    $_SESSION['user'] = true;
+                    $_SESSION['user_firstName'] = $user['firstName'];
+                    $_SESSION['user_id'] = $user['userID'];
+                    header('Location: ' . BASE_URL . '/index.php?action=dashboard');
+                    exit();
+                } else {
+                    $_SESSION['login_attempts']['count']++;
+                    $error = "Invalid email or password.";
+                }
             }
         }
     }
