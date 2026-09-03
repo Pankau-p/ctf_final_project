@@ -1,4 +1,8 @@
 <?php
+if (!defined('BASE_URL')) {
+    define('BASE_URL', '');
+}
+
 http_response_code(404);
 include($_SERVER['DOCUMENT_ROOT'] . '/view/shared/header.php');
 ?>
@@ -15,7 +19,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/view/shared/header.php');
                 Signal lost. The page you're looking for could not be located.
             </p>
 
-            <p class="landing-description">
+            <p class="landing-subtitle">
                 The target may have moved, been deleted, or never existed.
                 No flags were found at this location.
             </p>
