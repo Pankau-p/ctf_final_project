@@ -1348,3 +1348,289 @@ main {
     color: var(--color-text);
     font-weight: 600;
 }
+/* ============================================
+   LANDING PAGE — EXTENDED SECTIONS
+   Adds to the existing hero styles.
+   All new classes prefixed with landing-
+   to avoid conflicts with existing styles.
+   ============================================ */
+
+/* --- Hero sub text --- */
+
+.landing-hero-sub {
+    font-size: var(--font-size-sm);
+    color: var(--color-landing-muted);;
+    line-height: 1.9;
+    max-width: 36rem;
+    margin: var(--space-lg) auto 0;
+    text-align: center;
+}
+
+/* --- Divider line --- */
+
+.landing-divline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ff2d6b, transparent);
+}
+
+/* --- Sections --- */
+
+.landing-section {
+    background: #ebe4ff;
+    padding: var(--space-xxl) var(--space-xl);
+    max-width: 100%;
+}
+
+.landing-section-title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text);
+    text-align: center;
+    margin-bottom: var(--space-sm);
+}
+
+.landing-section-intro {
+    font-size: var(--font-size-base);
+    color: var(--color-text-muted);
+    text-align: center;
+    line-height: 1.9;
+    max-width: 36rem;
+    margin: 0 auto var(--space-md);
+}
+
+/* --- Two col rows --- */
+
+.landing-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+    max-width: 52rem;
+    margin: var(--space-xxl) auto 0;
+}
+
+.landing-two-col-reverse {
+    direction: rtl;
+}
+
+.landing-two-col-reverse>* {
+    direction: ltr;
+}
+
+/* --- Visual box --- */
+
+.landing-visual {
+    background: #1e1b3a;
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    min-height: 10rem;
+}
+
+.landing-visual-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    margin-bottom: var(--space-xs);
+}
+
+.landing-visual-line {
+    height: 1px;
+    border-radius: 99px;
+    background: #8b5cf6;
+    opacity: 0.4;
+}
+
+.landing-visual-code {
+    font-family: monospace;
+    font-size: var(--font-size-sm);
+    color: #c4b5fd;
+    display: block;
+}
+
+.landing-visual-success {
+    font-size: var(--font-size-xs);
+    color: #4ade80;
+    margin-top: var(--space-xs);
+}
+
+.landing-visual-rank {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xxl);
+    font-weight: 700;
+    color: #38bdf8;
+    line-height: 1;
+    text-align: center;
+}
+
+.landing-visual-rank-label {
+    font-size: var(--font-size-xs);
+    color: #6b5fa0;
+    text-align: center;
+}
+
+/* --- Copy block --- */
+
+.landing-copy {
+    padding: var(--space-sm) 0;
+}
+
+.landing-copy-title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-sm);
+}
+
+.landing-copy-text {
+    font-size: var(--font-size-base);
+    color: var(--color-text-muted);
+    line-height: 1.9;
+}
+
+/* --- Challenge preview --- */
+
+.landing-challenge-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    max-width: 36rem;
+    margin: var(--space-xl) auto 0;
+}
+
+.landing-challenge-card {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.landing-challenge-top {
+    background: #1e1b3a;
+    padding: var(--space-sm) var(--space-md);
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.landing-challenge-body {
+    padding: var(--space-md);
+}
+
+.landing-challenge-name {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.landing-cta-row {
+    text-align: center;
+    margin-top: var(--space-xl);
+}
+
+/* --- Leaderboard + blog split --- */
+
+
+.landing-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xxl);
+    padding: 6em 8rem;
+}
+.landing-split-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: 0 4rem;
+    
+}
+
+.landing-split-title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.landing-split-sub {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+}
+
+.landing-lb {
+    display: flex;
+    flex-direction: column;
+}
+
+.landing-lb-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.landing-lb-row:last-child {
+    border-bottom: none;
+}
+
+.landing-lb-pts {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    color: var(--color-purple);
+}
+
+.landing-posts {
+    display: flex;
+    flex-direction: column;
+}
+
+.landing-post-row {
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    font-weight: 500;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.landing-post-row:last-child {
+    border-bottom: none;
+}
+
+.landing-post-meta {
+    color: var(--color-text-muted);
+    font-weight: 400;
+}
+
+/* --- Final CTA --- */
+
+.landing-cta-final {
+    background: var(--color-landing-bg);
+    padding: var(--space-xxl) var(--space-xl);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.landing-cta-title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-landing-text);
+}
+
+.landing-cta-text {
+    font-size: var(--font-size-base);
+    color: var(--color-landing-muted);
+    line-height: 1.9;
+    max-width: 32rem;
+}
