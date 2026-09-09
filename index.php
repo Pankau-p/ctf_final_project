@@ -201,7 +201,7 @@
                 <h2 class="landing-split-title">Latest Posts</h2>
                 <p class="landing-split-sub">Not sure where to start? The Resources page has you covered.</p>
                 <div class="landing-posts">
-                    <div class="landing-post-row">What are HTTP headers? <span class="landing-post-meta">· Web · May 2026</span></div>
+                    <div class="landing-post-row">Nmap — The Complete Reference <span class="landing-post-meta">· Tools · September 2026</span></div>
                     <div class="landing-post-row">Base64 is not encryption <span class="landing-post-meta">· Crypto · May 2026</span></div>
                     <div class="landing-post-row">No Robots: what is robots.txt? <span class="landing-post-meta">· Web · Jun 2026</span></div>
                 </div>
